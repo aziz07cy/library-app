@@ -16,12 +16,12 @@
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                 </flux:navlist.group>
                 <flux:navlist.group :heading="'Master'" class="grid">
-                    <flux:navlist.item icon="users" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>Anggota</flux:navlist.item>
-                    <flux:navlist.item icon="rectangle-stack" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>Buku</flux:navlist.item>
+                    <flux:navlist.item icon="users" :href="route('anggota')" :current="request()->routeIs('anggota')" wire:navigate>Anggota</flux:navlist.item>
+                    <flux:navlist.item icon="rectangle-stack" :href="route('buku')" :current="request()->routeIs('buku')" wire:navigate>Buku</flux:navlist.item>
                 </flux:navlist.group>
                 <flux:navlist.group :heading="'Transaksi'" class="grid">
-                    <flux:navlist.item icon="arrow-left-start-on-rectangle" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>Peminjaman</flux:navlist.item>
-                    <flux:navlist.item icon="arrow-right-end-on-rectangle" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>Pengembalian</flux:navlist.item>
+                    <flux:navlist.item icon="arrow-left-start-on-rectangle" :href="route('peminjaman')" :current="request()->routeIs('peminjaman')" wire:navigate>Peminjaman</flux:navlist.item>
+                    <flux:navlist.item icon="arrow-right-end-on-rectangle" :href="route('pengembalian')" :current="request()->routeIs('pengembalian')" wire:navigate>Pengembalian</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

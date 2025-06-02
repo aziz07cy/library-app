@@ -20,15 +20,15 @@
             <flux:dropdown>
                 <flux:navbar.item icon:trailing="chevron-down">Master</flux:navbar.item>
                 <flux:navmenu>
-                    <flux:navmenu.item href="#">Anggota</flux:navmenu.item>
-                    <flux:navmenu.item href="#">Buku</flux:navmenu.item>
+                    <flux:navmenu.item :href="route('anggota')" :current="request()->routeIs('anggota')" wire:navigate>Anggota</flux:navmenu.item>
+                    <flux:navmenu.item :href="route('buku')" :current="request()->routeIs('buku')" wire:navigate>Buku</flux:navmenu.item>
                 </flux:navmenu>
             </flux:dropdown>
             <flux:dropdown>
                 <flux:navbar.item icon:trailing="chevron-down">Transaksi</flux:navbar.item>
                 <flux:navmenu>
-                    <flux:navmenu.item href="#">Peminjaman</flux:navmenu.item>
-                    <flux:navmenu.item href="#">Pengembalian</flux:navmenu.item>
+                    <flux:navmenu.item :href="route('peminjaman')" :current="request()->routeIs('peminjaman')" wire:navigate>Peminjaman</flux:navmenu.item>
+                    <flux:navmenu.item :href="route('pengembalian')" :current="request()->routeIs('pengembalian')" wire:navigate>Pengembalian</flux:navmenu.item>
                 </flux:navmenu>
             </flux:dropdown>
         </flux:navbar>
