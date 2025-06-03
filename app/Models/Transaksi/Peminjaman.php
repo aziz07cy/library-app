@@ -14,13 +14,16 @@ class Peminjaman extends Model
     use HasFactory;
     protected $table = 'peminjaman';
 
-    protected $fillable = ['tanggal_pinjam', 'anggota_id', 'buku_id'];
+    protected $fillable = ['tanggal_peminjaman', 'anggota_id', 'buku_id'];
 
     protected static function newFactory()
     {
         return PeminjamanFactory::new();
     }
 
+    /* RULE
+    *  setiap peminjaman hanya dilakukan oleh 1 anggota dan hanya 1 buku
+    */
     public function anggota()
     {
         return $this->belongsTo(Anggota::class, 'anggota_id', 'id')->withDefault([

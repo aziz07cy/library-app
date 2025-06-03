@@ -5,19 +5,5 @@ window.toast = Swal.mixin({
     position: 'top-end',
     showConfirmButton: false,
     timer: 2000,
-    showClass: {
-        popup: `
-          animate__animated
-          animate__bounceInRight
-          animate__faster
-        `
-    },
-    hideClass: {
-        popup: `
-          animate__animated
-          animate__bounceOutRight
-          animate__faster
-        `
-    },
     timerProgressBar: true,
 });

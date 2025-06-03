@@ -19,6 +19,9 @@ class Pengembalian extends Model
         return PengembalianFactory::new();
     }
 
+    /* RULE
+    *  setiap pengembalian hanya dilakukan untuk 1 buku
+    */
     public function buku()
     {
         return $this->belongsTo(Buku::class, 'buku_id', 'id')->withDefault([

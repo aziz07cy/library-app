@@ -21,6 +21,9 @@ class Buku extends Model
         return BukuFactory::new();
     }
 
+    /* RULE RELATIONSHIP
+    *  setiap masing-masing buku dapat dipinjam dan dikembalikan
+    */
     public function peminjaman()
     {
         return $this->hasMany(Peminjaman::class, 'buku_id', 'id');
