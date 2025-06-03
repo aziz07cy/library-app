@@ -25,9 +25,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Buku::factory()
-            ->count(50)
-            ->has(Pengembalian::factory()->count(3))
-            ->has(Peminjaman::factory()->count(4)->for(Anggota::factory()->create()))
-            ->create();
+            ->count(11)
+            ->has(
+                Pengembalian::factory()->count(11))
+            ->has(
+                Peminjaman::factory()->count(11)
+                    ->for(Anggota::factory()->count(11)->create()->random())
+            )->create();
     }
 }
