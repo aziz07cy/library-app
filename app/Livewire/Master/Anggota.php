@@ -70,17 +70,11 @@ class Anggota extends Component
         }
     }
 
-    #[On('onModalFormClose')]
-    public function onModalFormClose()
+    #[On('onModalClose')]
+    public function onModalClose()
     {
         $this->selectedAnggota = null;
         $this->nama = null;
         $this->tanggal_lahir = null;
-    }
-
-    #[On('onModalConfirmClose')]
-    public function onModalConfirmClose()
-    {
-        $this->nama = null;
     }
 }

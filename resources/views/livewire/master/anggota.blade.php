@@ -16,12 +16,12 @@
     modalFormClose(){
         this.modalForm= false;
         this.clearInvalid();
-        $dispatch('onModalFormClose')
+        $dispatch('onModalClose')
     },
     modalConfirm: false, 
     modalConfirmClose(){
         this.modalConfirm=false;
-        $dispatch('onModalConfirmClose')
+        $dispatch('onModalClose')
     },
     modalsClose(){
         this.modalFormClose();
@@ -31,7 +31,9 @@
     @keydown.escape.window="modalsClose()"
     @toast.window="modalsClose()">
     <div class="flex flex-col">
-        <div class="text-lg font-medium" @openModalForm.window="modalForm=true;console.log('asdasd')">Pengolahan Anggota</div>
+        <div class="text-lg font-medium" @openModalForm.window="modalForm=true;console.log('asdasd')">
+            Pengolahan Anggota
+        </div>
         <livewire:utils.breadcrumbs :breadcrumbs="$breadcrumbs" />
     </div>
     <div class="d-card bg-base-100 flex flex-col gap-2 md:gap-4 lg:gap-6 p-2 md:p-4 lg:p-6">
@@ -76,7 +78,7 @@
         @invalid.window="
             invalid.invalid='Mohon periksa kembali input anda';
             invalid.nama=$event.detail[0].nama ?? $event.detail[0].nama;
-            invalid.tanggal_lahir=$event.detail[0].tanggal_lahir ?? $event.detail[0].tanggal_lahir"
+            invalid.tanggal_lahir=$event.detail[0].tanggal_lahir ?? $event.detail[0].tanggal_lahir;"
         x-cloak>
         <div x-show="modalForm"
             x-transition:enter="ease-out duration-200"
@@ -99,7 +101,7 @@
             <div class="flex items-center justify-between pb-2">
                 <h3 class="text-lg font-semibold">Form Anggota</h3>
                 <button @click="modalFormClose()" class="absolute top-0 right-0 flex items-center justify-center w-8 h-8 mt-5 mr-5 text-gray-600 rounded-full hover:text-gray-800 hover:bg-gray-50">
-                    <i class="bi bi-x"></i>
+                    <flux:icon.x-mark />
                 </button>
             </div>
 
@@ -159,7 +161,7 @@
             <div class="flex items-center justify-between pb-2">
                 <h3 class="text-lg font-semibold">Konfirmasi</h3>
                 <button @click="modalConfirmClose()" class="absolute top-0 right-0 flex items-center justify-center w-8 h-8 mt-5 mr-5 text-gray-600 rounded-full hover:text-gray-800 hover:bg-gray-50">
-                    <i class="bi bi-x"></i>
+                    <flux:icon.x-mark />
                 </button>
             </div>
 
@@ -178,12 +180,4 @@
 
         </div>
     </div>
-
-    @script
-    <script>
-        $wire.on('openModalForm', () => {
-            console.log('haloooo');
-        })
-    </script>
-    @endscript
 </div>

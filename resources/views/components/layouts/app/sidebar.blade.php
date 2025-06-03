@@ -151,6 +151,9 @@
                     allowOutsideClick: false,
                 });
             });
+            Livewire.on('invalid', () => {
+                Swal.close();
+            });
         });
     </script>
 </body>
