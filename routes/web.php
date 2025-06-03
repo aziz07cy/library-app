@@ -24,10 +24,21 @@ Route::middleware(['auth'])->group(function () {
     Route::get('settings/password', Password::class)->name('settings.password');
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
 
-    Route::get('anggota', Anggota::class)->name('anggota');
-    Route::get('buku', Buku::class)->name('buku');
-    Route::get('peminjaman', Peminjaman::class)->name('peminjaman');
-    Route::get('pengembalian', Pengembalian::class)->name('pengembalian');
+    Route::prefix('master')->group(function () {
+        Route::get('/', function () {
+            return redirect('dashboard');
+        });
+        Route::get('anggota', Anggota::class)->name('anggota');
+        Route::get('buku', Buku::class)->name('buku');
+    });
+
+    Route::prefix('transaksi')->group(function () {
+        Route::get('/', function () {
+            return redirect('dashboard');
+        });
+        Route::get('peminjaman', Peminjaman::class)->name('peminjaman');
+        Route::get('pengembalian', Pengembalian::class)->name('pengembalian');
+    });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

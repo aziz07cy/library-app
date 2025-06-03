@@ -25,7 +25,7 @@
     --color-zinc-600: #525252;
     --color-zinc-700: #404040;
     --color-zinc-800: #262626;
-    --color-zinc-900: #171717;
+    --color-zinc-90: #171717;
     --color-zinc-950: #0a0a0a;
 
     --color-accent: var(--color-neutral-800);
@@ -57,6 +57,10 @@
 
 [data-flux-label] {
     @apply !mb-0 !leading-tight;
+}
+
+[data-flux-navlist-item][data-current] {
+    @apply bg-primary text-primary-content;
 }
 
 input:focus[data-flux-control],
