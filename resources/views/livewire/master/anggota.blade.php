@@ -31,7 +31,7 @@
     @keydown.escape.window="modalsClose()"
     @toast.window="modalsClose()">
     <div class="flex flex-col">
-        <div class="text-lg font-medium" @openModalForm.window="modalForm=true;console.log('asdasd')">
+        <div class="text-lg font-medium">
             Pengolahan Anggota
         </div>
         <livewire:utils.breadcrumbs :breadcrumbs="$breadcrumbs" />
