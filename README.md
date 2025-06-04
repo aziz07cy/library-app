@@ -19,7 +19,7 @@
 
 -   `composer install` dan `npm install`
 -   copy-paste _.env.example_ menjadi _.env_
--   membuat database (jika ada) sesuai dengan konfigurasi pada _.env.example_
+-   membuat database (jika belum ada) sesuai dengan konfigurasi pada _.env.example_
 -   `php artisan key:generate`
 -   `php artisan migrate --seed` mohon gunakan seeder untuk menampilkan chart dengan baik
 -   `php artisan serve`
