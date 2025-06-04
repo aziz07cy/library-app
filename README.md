@@ -24,7 +24,7 @@
 -   `php artisan migrate --seed` mohon gunakan seeder untuk menampilkan chart dengan baik
 -   `php artisan serve`
 -   buat jendela CMD baru dan jalankan `npm run dev`
--   buka web browser dan masuk ke http://localhost:8000 kemudian login dengan `email = _test@example.com_` dan `password = _password_`
+-   buka web browser dan masuk ke http://localhost:8000 kemudian login dengan `email = test@example.com` dan `password = password`
 
 ## Catatan
 
