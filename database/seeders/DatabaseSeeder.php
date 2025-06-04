@@ -27,15 +27,23 @@ class DatabaseSeeder extends Seeder
         $anggota = Anggota::factory()->count(11)->create();
         $buku = Buku::factory()->count(11)->create();
 
+        // tadinya seeder cukup ada saja, tetapi karna ada kebutuhan menampilkan chart jadi dibantu AI untuk memnuhi chart tersebut
         foreach ($anggota as $member) {
-            Pengembalian::factory()->count(2)->create([
-                'buku_id' => $buku->random()->id
-            ]);
+            for ($i = 0; $i < 2; $i++) {
+                $tanggal_peminjaman = now()->startOfWeek()->addDays(rand(0, 6));
+                $tanggal_pengembalian = $tanggal_peminjaman->copy()->addDays(rand(1, 3));
 
-            Peminjaman::factory()->count(2)->create([
-                'anggota_id' => $member->id,
-                'buku_id' => $buku->random()->id
-            ]);
+                Peminjaman::factory()->create([
+                    'anggota_id' => $member->id,
+                    'buku_id' => $buku->random()->id,
+                    'tanggal_peminjaman' => $tanggal_peminjaman,
+                ]);
+
+                Pengembalian::factory()->create([
+                    'buku_id' => $buku->random()->id,
+                    'tanggal_kembali' => $tanggal_pengembalian
+                ]);
+            }
         }
     }
 }
