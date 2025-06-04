@@ -6,6 +6,7 @@ use App\Models\Master\Anggota as ModelAnggota;
 use App\Models\Master\Buku as ModelBuku;
 use App\Models\Transaksi\Peminjaman as ModelPeminjaman;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -66,12 +67,27 @@ class Peminjaman extends Component
     public function onClickSimpanPeminjaman()
     {
         $now = Carbon::now()->format('Y-m-d');
-        $peminjaman = [
-            'tanggal_peminjaman' => $now,
-            'anggota_id' => $this->selectedAnggota['id'],
-            'buku_id' => $this->selectedBuku['id']
-        ];
-        ModelPeminjaman::create($peminjaman);
+        if (!$this->selectedAnggota || !$this->selectedBuku) {
+            $this->dispatch('toast', ['', 'Anggota atau Buku tidak valid', 'error']);
+            return;
+        }
+
+        DB::transaction(function () use ($now) {
+            ModelPeminjaman::create([
+                'tanggal_peminjaman' => $now,
+                'anggota_id' => $this->selectedAnggota['id'],
+                'buku_id' => $this->selectedBuku['id']
+            ]);
+
+            $buku = ModelBuku::find($this->selectedBuku['id']);
+            if ($buku && $buku->stock > 0) {
+                $buku->decrement('stock');
+            } else {
+                $this->dispatch('toast', ['', 'Stok buku tidak mencukupi', 'warning']);
+                return;
+            }
+        });
+
         $this->dispatch('toast', ['', 'Peminjaman Buku berhasil disimpan', 'success']);
         $this->onClickResetPeminjaman();
     }

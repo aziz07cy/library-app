@@ -24,12 +24,6 @@ class Pengembalian extends Model
     */
     public function buku()
     {
-        return $this->belongsTo(Buku::class, 'buku_id', 'id')->withDefault([
-            'id' => null,
-            'judul_buku' => 'Buku tidak tercantum',
-            'penerbit' => '-',
-            'dimensi' => '-',
-            'stock' => 0
-        ]);
+        return $this->belongsTo(Buku::class);
     }
 }

@@ -24,13 +24,18 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Buku::factory()
-            ->count(11)
-            ->has(
-                Pengembalian::factory()->count(11))
-            ->has(
-                Peminjaman::factory()->count(11)
-                    ->for(Anggota::factory()->count(11)->create()->random())
-            )->create();
+        $anggota = Anggota::factory()->count(11)->create();
+        $buku = Buku::factory()->count(11)->create();
+
+        foreach ($anggota as $member) {
+            Pengembalian::factory()->count(2)->create([
+                'buku_id' => $buku->random()->id
+            ]);
+
+            Peminjaman::factory()->count(2)->create([
+                'anggota_id' => $member->id,
+                'buku_id' => $buku->random()->id
+            ]);
+        }
     }
 }
